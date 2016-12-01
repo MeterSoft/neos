@@ -1,0 +1,12 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Price (£)
+      %th
+  %tbody
+    - collection.each do |item|
+      %tr
+        %td= item.name
+        %td= item.price
+        %td= link_to "Buy", purchase_purchase_path(item), method: :put, class: "btn btn-outline-success  float-lg-right"

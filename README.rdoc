@@ -1,0 +1,24 @@
+== README
+
+Application consists of 3 tables: Items, PromoteCodes and Creditcards. After click "buy" button, application stores item id on session. When user finished shopping and goes to basket, system finds all items in database and calculates price. If applys any promocodes then price will be recalculated. After entered credincard order will be finished and sesion will be cleared
+
+ruby-2.0.0-p648
+rails 4.0.1
+
+* Install 
+  
+  1. git clone 
+  2. cd neos
+  3. bundle install
+  4. rake db:create
+  5. rake db:migrate
+  6. rake db:seed
+  7. rails s
+  9. Go to http://localhost:3000
+
+
+* Test
+
+  1. rake db:create
+  2. rake db:test:prepare
+  3. bundle exec rspec

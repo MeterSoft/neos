@@ -1,0 +1,42 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Count
+      %th Price (£)
+      %th Total
+      %th
+  %tbody
+    - @items.each do |item|
+      %tr
+        %td= item[:name]
+        %td= item[:count]
+        %td= item[:price].to_price
+        %td= item[:amount].to_price
+        %td
+          = link_to basket_path(item[:id]), method: :put, class: "float-lg-right" do
+            %i.fa.fa-times
+    %tr
+      %td Total 
+      %td 
+      %td 
+      %td= @total.to_price
+      %td
+%br
+= link_to "Next", new_creditcard_path(), class: "btn btn-success float-lg-right"
+%br
+%ul.list-group
+  %h2 Promocodes:
+  - @promocodes.each do |code|
+    %li.list-group-item
+      = code.name
+      = link_to remove_promo_code_basket_path(code.id), method: :delete, class: "float-lg-right" do
+        %i.fa.fa-times
+%br
+= simple_form_for :promocode, url: attach_promo_code_baskets_path, html: { class: "form-inline" } do |f|
+  .form-group
+    = f.input :name, input_html: { class: "form-control" }
+  = f.submit "Attach", class: "btn btn-primary"
+
+
+%br= link_to "Back", root_path
